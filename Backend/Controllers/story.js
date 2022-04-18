@@ -24,7 +24,7 @@ const addStory = asyncErrorWrapper(async (req, res, next) => {
 
     return res.status(200).json({
       success: true,
-      message: "add story successfully ",
+      message: "add story successfully",
       data: newStory,
     });
   } catch (error) {
