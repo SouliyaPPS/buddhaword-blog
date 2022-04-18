@@ -17,5 +17,8 @@
   "bugs": {
     "url": "https://github.com/SouliyaPPS/buddhaword-blog/issues"
   },
-  "homepage": "https://github.com/SouliyaPPS/buddhaword-blog#readme"
+  "homepage": "https://github.com/SouliyaPPS/buddhaword-blog#readme",
+  "devDependencies": {
+    "vercel": "^24.1.0"
+  }
 }
