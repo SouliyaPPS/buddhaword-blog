@@ -43,58 +43,74 @@ const ReadListPage = () => {
 
 
     return (
-      <>
-        {loading ? (
-          <Loader />
-        ) : (
-          <div className="Inclusive-readList-page">
-            <h2>Reading List </h2>
+        <>
+            {loading ? <Loader /> :
 
-            <div className="readList-top-block">
-              <img
-                src={`https://raw.githubusercontent.com/SouliyaPPS/buddhaword-blog/main/Backend/public/userPhotos/${activeUser.photo}`}
-                alt={activeUser.username}
-              />
+                <div className="Inclusive-readList-page">
 
-              <div className="activeUser-info-wrapper">
-                <b>{activeUser.username}</b>
+                    <h2>Reading List </h2>
 
-                <div>
-                  <span>{editDate(Date.now())}</span>
-                  <span>-</span>
-                  <span>{activeUser.readListLength} stories</span>
-                  <i>
-                    <AiFillLock />
-                  </i>
+                    <div className="readList-top-block">
+
+                        <img src={`/userPhotos/${activeUser.photo}`} alt={activeUser.username} />
+
+
+                        <div className='activeUser-info-wrapper'>
+
+                            <b>
+                                {activeUser.username}
+                            </b>
+
+                            <div>
+                                <span>
+                                    {editDate(Date.now())}
+                                </span>
+                                <span>-</span>
+                                <span>
+                                    {activeUser.readListLength} stories
+                                </span>
+                                <i>
+                                    <AiFillLock />
+                                </i>
+                            </div>
+
+                        </div>
+
+                        <i className='BsThreeDots-icon'>
+                            < BsThreeDots />
+                        </i>
+
+                    </div>
+
+                    <div className="readList-story-wrapper">
+
+                        {readList.length !== 0 ?
+                            <>
+                                {readList.map(story => {
+                                    return (
+                                  <ReadListStoryItem key={story._id}  story ={story} editDate={editDate} /> 
+                              
+                                    )
+                                 })}
+                            </>
+
+                            :
+
+                            <div className="empty-readList">
+
+                                Reading List is empty
+
+                            </div>
+                        }
+
+
+                    </div>
+
                 </div>
-              </div>
+            }
+        </>
 
-              <i className="BsThreeDots-icon">
-                <BsThreeDots />
-              </i>
-            </div>
-
-            <div className="readList-story-wrapper">
-              {readList.length !== 0 ? (
-                <>
-                  {readList.map((story) => {
-                    return (
-                      <ReadListStoryItem
-                        key={story._id}
-                        story={story}
-                        editDate={editDate}
-                      />
-                    );
-                  })}
-                </>
-              ) : (
-                <div className="empty-readList">Reading List is empty</div>
-              )}
-            </div>
-          </div>
-        )}
-      </>
-    );
+    )
 }
 
 export default ReadListPage
