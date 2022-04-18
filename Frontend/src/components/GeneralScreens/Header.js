@@ -38,8 +38,7 @@ const Header = () => {
 
                 <Link to="/" className="logo">
                     <h5>
-                        MERN BLOG
-
+                        <img src="https://i.ibb.co/S5MGF09/380.png" width="80px" heigh="80px"/>
                     </h5>
                 </Link>
                 <SearchForm />
@@ -65,7 +64,7 @@ const Header = () => {
 
                                     :
 
-                                    <img src={`/userPhotos/${activeUser.photo}`} alt={activeUser.username} />
+                                    <img src={`https://raw.githubusercontent.com/SouliyaPPS/buddhaword-blog/main/Backend/public/userPhotos/${activeUser.photo}`} alt={activeUser.username} />
 
                                 }
 
