@@ -157,163 +157,166 @@ const DetailStory = () => {
 
   return (
     <>
-      {
-        loading ? <Loader /> :
-          <>
+      {loading ? (
+        <Loader />
+      ) : (
+        <>
+          <div className="Inclusive-detailStory-page">
+            <div className="top_detail_wrapper">
+              <h5>{story.title}</h5>
 
-            <div className='Inclusive-detailStory-page'>
-
-              <div className="top_detail_wrapper">
-
-                <h5>{story.title}</h5>
-
-                <div className='story-general-info'>
-
-                  <ul>
-                    {story.author &&
-                      <li className='story-author-info'>
-                        <img src={`/userPhotos/${story.author.photo}`} alt={story.author.username} />
-                        <span className='story-author-username'>{story.author.username}  </span>
-                      </li>
-                    }
-                    <li className='story-createdAt'>
-                      {
-                        editDate(story.createdAt)
-                      }
-                    </li>
-                    <b>-</b>
-
-                    <li className='story-readtime'>
-                      {story.readtime} min read
-
-                    </li>
-
-                  </ul>
-
-                  {
-                    !activeUser.username &&
-                    <div className='comment-info-wrap'>
-
-                      <i onClick={(prev) => {
-                        setSidebarShowStatus(!sidebarShowStatus)
-                      }}>
-                        <FaRegComment />
-                      </i>
-
-
-                      <b className='commentCount'>{story.commentCount}</b>
-
-                    </div>
-                  }
-
-                  {activeUser && story.author &&
-                    story.author._id === activeUser._id ?
-                    <div className="top_story_transactions">
-                      <Link className='editStoryLink' to={`/story/${story.slug}/edit`}>
-                        <FiEdit />
-                      </Link>
-                      <span className='deleteStoryLink' onClick={handleDelete}>
-                        <RiDeleteBin6Line />
+              <div className="story-general-info">
+                <ul>
+                  {story.author && (
+                    <li className="story-author-info">
+                      <img
+                        src={`/userPhotos/${story.author.photo}`}
+                        alt={story.author.username}
+                      />
+                      <span className="story-author-username">
+                        {story.author.username}{" "}
                       </span>
-                    </div> : null
-                  }
-                </div>
+                    </li>
+                  )}
+                  <li className="story-createdAt">
+                    {editDate(story.createdAt)}
+                  </li>
+                  <b>-</b>
 
+                  <li className="story-readtime">{story.readtime} min read</li>
+                </ul>
+
+                {!activeUser.username && (
+                  <div className="comment-info-wrap">
+                    <i
+                      onClick={(prev) => {
+                        setSidebarShowStatus(!sidebarShowStatus);
+                      }}
+                    >
+                      <FaRegComment />
+                    </i>
+
+                    <b className="commentCount">{story.commentCount}</b>
+                  </div>
+                )}
+
+                {activeUser &&
+                story.author &&
+                story.author._id === activeUser._id ? (
+                  <div className="top_story_transactions">
+                    <Link
+                      className="editStoryLink"
+                      to={`/story/${story.slug}/edit`}
+                    >
+                      <FiEdit />
+                    </Link>
+                    <span className="deleteStoryLink" onClick={handleDelete}>
+                      <RiDeleteBin6Line />
+                    </span>
+                  </div>
+                ) : null}
               </div>
-
-              <div className="CommentFieldEmp">
-
-                <CommentSidebar slug={slug} sidebarShowStatus={sidebarShowStatus} setSidebarShowStatus={setSidebarShowStatus}
-                  activeUser={activeUser}
-                />
-
-              </div>
-
-              <div className='story-content' >
-
-                <div className="story-banner-img">
-                  <img src={`/storyImages/${story.image}`} alt={story.title} />
-
-                </div>
-
-                <div className='content' dangerouslySetInnerHTML={{ __html: (story.content) }}>
-                </div>
-
-              </div>
-
-              {activeUser.username &&
-                <div className='fixed-story-options'>
-
-                  <ul>
-                    <li>
-
-                      <i onClick={handleLike} >
-
-                        {likeStatus ? <FaHeart color="#0063a5" /> :
-                          <FaRegHeart />
-                        }
-                      </i>
-
-                      <b className='likecount'
-                        style={likeStatus ? { color: "#0063a5" } : { color: "rgb(99, 99, 99)" }}
-                      >  {likeCount}
-                      </b>
-
-                    </li>
-
-
-                    <li>
-                      <i onClick={(prev) => {
-                        setSidebarShowStatus(!sidebarShowStatus)
-                      }}>
-                        <FaRegComment />
-                      </i>
-
-                      <b className='commentCount'>{story.commentCount}</b>
-
-                    </li>
-
-                  </ul>
-
-                  <ul>
-                    <li>
-                      <i onClick={addStoryToReadList}>
-
-                        {storyReadListStatus ? <BsBookmarkFill color='#0205b1' /> :
-                          <BsBookmarkPlus />
-                        }
-                      </i>
-                    </li>
-
-                    <li className='BsThreeDots_opt'>
-                      <i  >
-                        <BsThreeDots />
-                      </i>
-
-                      {activeUser &&
-                        story.author._id === activeUser._id ?
-                        <div className="delete_or_edit_story  ">
-                          <Link className='editStoryLink' to={`/story/${story.slug}/edit`}>
-                            <p>Edit Story</p>
-                          </Link>
-                          <div className='deleteStoryLink' onClick={handleDelete}>
-                            <p>Delete Story</p>
-                          </div>
-                        </div> : null
-                      }
-
-                    </li>
-
-                  </ul>
-
-                </div>
-              }
-
             </div>
-          </>
-      }
+
+            <div className="CommentFieldEmp">
+              <CommentSidebar
+                slug={slug}
+                sidebarShowStatus={sidebarShowStatus}
+                setSidebarShowStatus={setSidebarShowStatus}
+                activeUser={activeUser}
+              />
+            </div>
+
+            <div className="story-content">
+              <div className="story-banner-img">
+                <img
+                  src={`https://raw.githubusercontent.com/SouliyaPPS/buddhaword-blog/main/Backend/public/storyImages/${story.image}`}
+                  alt={story.title}
+                />
+              </div>
+
+              <div
+                className="content"
+                dangerouslySetInnerHTML={{ __html: story.content }}
+              ></div>
+            </div>
+
+            {activeUser.username && (
+              <div className="fixed-story-options">
+                <ul>
+                  <li>
+                    <i onClick={handleLike}>
+                      {likeStatus ? (
+                        <FaHeart color="#0063a5" />
+                      ) : (
+                        <FaRegHeart />
+                      )}
+                    </i>
+
+                    <b
+                      className="likecount"
+                      style={
+                        likeStatus
+                          ? { color: "#0063a5" }
+                          : { color: "rgb(99, 99, 99)" }
+                      }
+                    >
+                      {" "}
+                      {likeCount}
+                    </b>
+                  </li>
+
+                  <li>
+                    <i
+                      onClick={(prev) => {
+                        setSidebarShowStatus(!sidebarShowStatus);
+                      }}
+                    >
+                      <FaRegComment />
+                    </i>
+
+                    <b className="commentCount">{story.commentCount}</b>
+                  </li>
+                </ul>
+
+                <ul>
+                  <li>
+                    <i onClick={addStoryToReadList}>
+                      {storyReadListStatus ? (
+                        <BsBookmarkFill color="#0205b1" />
+                      ) : (
+                        <BsBookmarkPlus />
+                      )}
+                    </i>
+                  </li>
+
+                  <li className="BsThreeDots_opt">
+                    <i>
+                      <BsThreeDots />
+                    </i>
+
+                    {activeUser && story.author._id === activeUser._id ? (
+                      <div className="delete_or_edit_story  ">
+                        <Link
+                          className="editStoryLink"
+                          to={`/story/${story.slug}/edit`}
+                        >
+                          <p>Edit Story</p>
+                        </Link>
+                        <div className="deleteStoryLink" onClick={handleDelete}>
+                          <p>Delete Story</p>
+                        </div>
+                      </div>
+                    ) : null}
+                  </li>
+                </ul>
+              </div>
+            )}
+          </div>
+        </>
+      )}
     </>
-  )
+  );
 }
 
 export default DetailStory;

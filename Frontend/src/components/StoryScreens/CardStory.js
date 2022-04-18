@@ -37,7 +37,7 @@ const Story = ({ story }) => {
       <Link to={`/story/${story.slug}`} className="story-link">
         <img
           className="story-image"
-          src={`/storyImages/${story.image}`}
+          src={`https://raw.githubusercontent.com/SouliyaPPS/buddhaword-blog/main/Backend/public/storyImages/${story.image}`}
           alt={story.title}
         />
         <div className="story-content-wrapper">

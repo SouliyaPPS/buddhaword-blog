@@ -24,20 +24,22 @@ app.use(customErrorHandler);
 
 const PORT = process.env.PORT || 5000;
 
-app.use(express.static(path.join(__dirname, "public")));
+//For Test on Local
+// app.use(express.static(path.join(__dirname, "public")));
 
-// app.use(express.static(path.join(__dirname, "../Frontend/build")));
+//For Deploy to Server
+app.use(express.static(path.join(__dirname, "../Frontend/build")));
 
-// app.get("*", function (_, res) {
-//   res.sendFile(
-//     path.join(__dirname, "../Frontend/build/index.html"),
-//     function (err) {
-//       if (err) {
-//         res.status(500).send(err);
-//       }
-//     }
-//   );
-// });
+app.get("*", function (_, res) {
+  res.sendFile(
+    path.join(__dirname, "../Frontend/build/index.html"),
+    function (err) {
+      if (err) {
+        res.status(500).send(err);
+      }
+    }
+  );
+});
 
 const server = app.listen(PORT, () => {
   console.log(`Server running on port  ${PORT} : ${process.env.NODE_ENV}`);
