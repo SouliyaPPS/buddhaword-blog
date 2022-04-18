@@ -65,75 +65,93 @@ const AddComment = ({ setSidebarShowStatus, slug, getStoryComments, activeUser, 
 
 
     return (
+      <>
+        <div className="sidebar-top-block">
+          <h3>
+            Responses ( <span className="sidebar-commentCount">{count}</span> ){" "}
+          </h3>
 
-        <>
-            <div className="sidebar-top-block">
+          <div>
+            <BsShieldCheck />
+            <IoAdd
+              onClick={() => setSidebarShowStatus(false)}
+              className="ıoAddIcon"
+            />
+          </div>
+        </div>
 
-                <h3>Responses ( <span className='sidebar-commentCount'>{count}
-                </span> )   </h3>
+        {error && <div className="alert-error-message">{error}</div>}
 
-                <div>
+        {activeUser.username && (
+          <form className="addComment-form" onSubmit={handleSubmit}>
+            {success && (
+              <div className="alert-success-message">
+                <BsCheckAll />
+                {success}
+              </div>
+            )}
 
-                    < BsShieldCheck />
-                    <IoAdd onClick={() => setSidebarShowStatus(false)} className='ıoAddIcon' />
-                </div>
+            <div
+              className={
+                showStatus ? "activeuser-info " : "activeuser-info hidden "
+              }
+            >
+              <img
+                src={`https://raw.githubusercontent.com/SouliyaPPS/buddhaword-blog/main/Backend/public/userPhotos/${activeUser.photo}`}
+                alt={activeUser.username}
+              />
+              <span className="username">{activeUser.username} </span>
             </div>
 
-            {error && <div className="alert-error-message">{error}</div>}
+            <div className="textarea-wrapper">
+              <div
+                ref={textareaRef}
+                contentEditable
+                placeholder="What are your thoughts ?"
+                id="comment"
+                name="content"
+                onKeyUp={(e) => {
+                  setContent(e.target.innerHTML);
+                  console.log(e.target.innerHTML);
+                }}
+                onFocus={() => setShowStatus(true)}
+              ></div>
+            </div>
 
+            <div
+              className={
+                showStatus ? "form-bottom-block" : "form-bottom-block hidden"
+              }
+            >
+              <StarRating
+                setStar={setStar}
+                setStarCurrentVal={setStarCurrentVal}
+                starCurrentVal={starCurrentVal}
+              />
 
-            {activeUser.username &&
-
-                <form className='addComment-form' onSubmit={handleSubmit}>
-
-
-                    {success && <div className="alert-success-message">
-                        <BsCheckAll />
-                        {success}</div>}
-
-
-                    <div className={showStatus ? 'activeuser-info ' : 'activeuser-info hidden '}>
-                        <img src={`/userPhotos/${activeUser.photo}`} alt={activeUser.username} />
-                        <span className='username'>{activeUser.username}  </span>
-                    </div>
-
-                    <div className="textarea-wrapper">
-                        <div ref={textareaRef}
-                            contentEditable
-                            placeholder='What are your thoughts ?' id="comment"
-                            name="content"
-                            onKeyUp={(e) => {
-                                setContent(e.target.innerHTML)
-                                console.log(e.target.innerHTML)
-                            }
-                            }
-
-                            onFocus={() => setShowStatus(true)}
-                        ></div>
-                    </div>
-
-                    <div className={showStatus ? 'form-bottom-block' : 'form-bottom-block hidden'} >
-                        <StarRating setStar={setStar} setStarCurrentVal={setStarCurrentVal} starCurrentVal={starCurrentVal} />
-
-                        <div className="formBtn-wrapper">
-                            <button type='button'
-                                className='cancel-Btn'
-                                onClick={() => setShowStatus(!showStatus)}
-                            >Cancel </button>
-                            <button type='submit' className={content === '' ? 'respond-Btn disable' : 'respond-Btn'}
-                                disabled={content === '' ? true : false}
-                            >Respond </button>
-
-                        </div>
-                    </div>
-
-                </form>
-
-
-            }
-        </>
-
-    )
+              <div className="formBtn-wrapper">
+                <button
+                  type="button"
+                  className="cancel-Btn"
+                  onClick={() => setShowStatus(!showStatus)}
+                >
+                  Cancel{" "}
+                </button>
+                <button
+                  type="submit"
+                  className={
+                    content === "" ? "respond-Btn disable" : "respond-Btn"
+                  }
+                  disabled={content === "" ? true : false}
+                >
+                  Respond{" "}
+                </button>
+              </div>
+            </div>
+          </form>
+        )}
+      </>
+    );
 }
 
 export default AddComment

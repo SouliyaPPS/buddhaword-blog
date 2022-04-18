@@ -68,70 +68,57 @@ const CommentItem = ({ comment, activeUser }) => {
     }
 
     return (
+      <div className="comment-item">
+        <div className="comment-top-block">
+          <section>
+            <img
+              src={`https://raw.githubusercontent.com/SouliyaPPS/buddhaword-blog/main/Backend/public/userPhotos/${comment.author.photo}`}
+              alt={comment.author.username}
+              width="35"
+            />
 
-        <div className='comment-item'>
-            <div className="comment-top-block">
-
-                <section>
-                    <img src={`/userPhotos/${comment.author.photo}`} alt={comment.author.username} width="35" />
-
-                    <div>
-                        <span className='comment-author-username' >{comment.author.username}</span>
-                        <span className='comment-createdAt'>{editDate(comment.createdAt)}</span>
-                    </div>
-                </section>
-
-                <section>
-                    <BsThreeDots />
-                </section>
+            <div>
+              <span className="comment-author-username">
+                {comment.author.username}
+              </span>
+              <span className="comment-createdAt">
+                {editDate(comment.createdAt)}
+              </span>
             </div>
+          </section>
 
-
-            <div className="comment-content">
-
-                <span dangerouslySetInnerHTML={{ __html: comment.content }}></span>
-
-            </div>
-
-
-            <div className="comment-bottom-block">
-
-                <div className="commentLike-wrapper">
-
-
-                    <i className='biLike' onClick={() => handleCommentLike()}>
-                        {
-                            likeStatus ? <MdWavingHand /> : <MdOutlineWavingHand />
-
-                        }
-                    </i>
-                    <span className='commentlikeCount'>
-                        {likeCount}
-
-                    </span>
-                </div>
-
-                <div className="comment-star">
-                    {
-                        [...Array(5)].map((_, index) => {
-                            return (
-                                <FaStar
-                                    key={index}
-                                    className="star"
-                                    size={15}
-                                    color={comment.star > index ? "#0205b1" : "grey"}
-                                />
-                            )
-                        })
-                    }
-
-                </div>
-
-            </div>
-
+          <section>
+            <BsThreeDots />
+          </section>
         </div>
 
-    )
+        <div className="comment-content">
+          <span dangerouslySetInnerHTML={{ __html: comment.content }}></span>
+        </div>
+
+        <div className="comment-bottom-block">
+          <div className="commentLike-wrapper">
+            <i className="biLike" onClick={() => handleCommentLike()}>
+              {likeStatus ? <MdWavingHand /> : <MdOutlineWavingHand />}
+            </i>
+            <span className="commentlikeCount">{likeCount}</span>
+          </div>
+
+          <div className="comment-star">
+            {[...Array(5)].map((_, index) => {
+              return (
+                <FaStar
+                  key={index}
+                  className="star"
+                  size={15}
+                  color={comment.star > index ? "#0205b1" : "grey"}
+                />
+              );
+            })}
+          </div>
+        </div>
+      </div>
+    );
 }
 
 export default CommentItem;
