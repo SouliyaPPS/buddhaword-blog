@@ -42,7 +42,7 @@ const getAllStories = asyncErrorWrapper( async (req,res,next) =>{
 
     let query = Story.find();
 
-    query =searchHelper("title",query,req)
+    query =searchHelper("content",query,req)
 
     const paginationResult =await paginateHelper(Story , query ,req)
 
