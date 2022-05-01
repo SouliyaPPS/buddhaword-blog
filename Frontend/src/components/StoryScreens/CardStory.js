@@ -22,30 +22,31 @@ const Story = ({ story }) => {
     }
     
     return (
+      <div className="story-card">
+        <Link to={`/story/${story.slug}`} className="story-link">
+          <img
+            className=" story-image"
+            src={`https://raw.githubusercontent.com/SouliyaPPS/buddhaword-blog/main/Backend/public/storyImages/${story.image}`}
+            alt={story.title}
+          />
+          <div className="story-content-wrapper">
+            <h5 className="story-title">
+              {story.title.length > 76
+                ? truncateTitle(story.title) + "..."
+                : story.title}
+            </h5>
 
-        <div className="story-card">
-            <Link to={`/story/${story.slug}`} className="story-link">
-
-                <img className=" story-image" src={`/storyImages/${story.image}`} alt={story.title} />
-                <div className="story-content-wrapper">
-
-                    <h5 className="story-title">
-                        
-                    {story.title.length > 76 ? truncateTitle(story.title)+"..." : story.title
-                    
-                    }
-                    </h5>
-
-
-                    <p className="story-text"dangerouslySetInnerHTML={{__html : truncateContent( story.content) +"..."}}>
-                        </p>
-                    <p className="story-createdAt">{editDate(story.createdAt)} 
-                    </p>
-                </div>
-            </Link>
-        </div>
-
-    )
+            <p
+              className="story-text"
+              dangerouslySetInnerHTML={{
+                __html: truncateContent(story.content) + "...",
+              }}
+            ></p>
+            <p className="story-createdAt">{editDate(story.createdAt)}</p>
+          </div>
+        </Link>
+      </div>
+    );
 }
 
 export default Story;
