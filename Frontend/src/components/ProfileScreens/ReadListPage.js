@@ -52,7 +52,7 @@ const ReadListPage = () => {
 
                     <div className="readList-top-block">
 
-                        <img src={`https://raw.githubusercontent.com/SouliyaPPS/buddhaword-blog/main/Backend/public/userPhotos/${activeUser.photo}`} alt={activeUser.username} />
+                        <img src={`/userPhotos/${activeUser.photo}`} alt={activeUser.username} />
 
 
                         <div className='activeUser-info-wrapper'>
