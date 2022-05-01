@@ -26,7 +26,7 @@ const Story = ({ story }) => {
         <Link to={`/story/${story.slug}`} className="story-link">
           <img
             className=" story-image"
-            src={`https://raw.githubusercontent.com/SouliyaPPS/buddhaword-blog/main/Backend/public/storyImages/${story.image}`}
+            src={`https://raw.githubusercontent.com/SouliyaPPS/buddhaword-blog/dependabot/npm_and_yarn/Frontend/minimist-1.2.6/Backend/public/storyImages/${story.image}`}
             alt={story.title}
           />
           <div className="story-content-wrapper">

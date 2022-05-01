@@ -230,7 +230,7 @@ const DetailStory = () => {
             <div className="story-content">
               <div className="story-banner-img">
                 <img
-                  src={`https://raw.githubusercontent.com/SouliyaPPS/buddhaword-blog/main/Backend/public/storyImages/${story.image}`}
+                  src={`https://raw.githubusercontent.com/SouliyaPPS/buddhaword-blog/dependabot/npm_and_yarn/Frontend/minimist-1.2.6/Backend/public/storyImages/${story.image}`}
                   alt={story.title}
                 />
               </div>
