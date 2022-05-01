@@ -56,8 +56,10 @@ const Header = () => {
                   <SkeletonElement type="minsize-avatar" />
                 ) : (
                   <img
-                    src={`/userPhotos/${activeUser.photo}`}
+                    // src={`/userPhotos/${activeUser.photo}`}
                     alt={activeUser.username}
+                    src="https://i.ibb.co/f8ZtpLm/Splash-Logo.png"
+                    width="50"
                   />
                 )}
 

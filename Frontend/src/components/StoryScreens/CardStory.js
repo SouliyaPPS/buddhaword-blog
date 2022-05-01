@@ -26,7 +26,7 @@ const Story = ({ story }) => {
         <div className="story-card">
             <Link to={`/story/${story.slug}`} className="story-link">
 
-                <img className=" story-image" src={`/storyImages/${story.image}`} alt={story.title} />
+                {/* <img className=" story-image" src={`/storyImages/${story.image}`} alt={story.title} /> */}
                 <div className="story-content-wrapper">
 
                     <h5 className="story-title">
@@ -37,10 +37,10 @@ const Story = ({ story }) => {
                     </h5>
 
 
-                    <p className="story-text"dangerouslySetInnerHTML={{__html : truncateContent( story.content) +"..."}}>
+                    {/* <p className="story-text"dangerouslySetInnerHTML={{__html : truncateContent( story.content) +"..."}}>
                         </p>
                     <p className="story-createdAt">{editDate(story.createdAt)} 
-                    </p>
+                    </p> */}
                 </div>
             </Link>
         </div>
