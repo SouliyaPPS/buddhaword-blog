@@ -1,6 +1,6 @@
 git init
 git add .
-git commit -m "yarn run build new"
+git commit -m "yarn run build"
 git branch -M main
 git remote add origin https://github.com/SouliyaPPS/buddhaword-blog.git
-git push -u origin main
+git push origin main
